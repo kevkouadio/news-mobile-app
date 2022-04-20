@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, ActivityIndicator, FlatList } from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-paper';
+import { StyleSheet, Text, View, ActivityIndicator, FlatList, Linking } from 'react-native';
+import { Card } from 'react-native-paper';
 //import Dimensions from 'Dimensions';
 
 const ArticlesCard = () => {
@@ -32,7 +32,7 @@ const ArticlesCard = () => {
           keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => (
             <Card style={styles.card}>
-              <Text style={styles.cardText}>{item.title}</Text>
+              <Text style={styles.cardText} onPress={() => Linking.openURL(item.url)}>{item.title}</Text>
               <Card.Cover style={styles.image} source={{ uri: item.urlToImage }} />
             </Card>
           )}
